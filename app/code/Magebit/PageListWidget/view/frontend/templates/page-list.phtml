@@ -1,0 +1,25 @@
+<?php
+    /** @var \Magebit\PageListWidget\Block\Widget $block */
+    /** @var \Magento\Framework\View\TemplateEngineInterface $this */
+    /** @var \Magento\Csp\Api\InlineUtilInterface $csp */
+    /** @var \Magento\Framework\Escaper $escaper */
+    /** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+
+<div class="widget block block-static-block">
+    <?php if ($block->getTitle()): ?>
+        <h3><?= $escaper->escapeHtml($block->getTitle()) ?></h3>
+    <?php endif ?>
+
+    <ul>
+        <?php foreach ($block->getPages() as $page): ?>
+
+            <li>
+                <a href="<?= $escaper->escapeHtml($block->createPageUrl($page)) ?>">
+                    <?= $escaper->escapeHtml($page->getTitle()) ?>
+                </a>
+            </li>
+
+        <?php endforeach ?>
+    </ul>
+</div>
