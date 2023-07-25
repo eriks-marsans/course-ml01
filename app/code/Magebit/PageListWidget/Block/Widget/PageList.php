@@ -39,6 +39,9 @@ class PageList extends Template implements BlockInterface
         parent::__construct($context, $data);
     }
 
+    /**
+     * Get the content title.
+     */
     public function getTitle(): ?string
     {
         /** @var ?string */
@@ -46,6 +49,8 @@ class PageList extends Template implements BlockInterface
     }
 
     /**
+     * Main method that returns a list of pages.
+     *
      * @return PageInterface[]
      */
     public function getPages(): array
@@ -77,7 +82,7 @@ class PageList extends Template implements BlockInterface
     }
 
     /**
-     * @return string  Page url.
+     * Returns the URL of the given page.
      */
     public function createPageUrl(PageInterface $page): string
     {
@@ -87,7 +92,7 @@ class PageList extends Template implements BlockInterface
     }
 
     /**
-     * Returns one of DISPLAY_MODE_ constants.
+     * Returns one of self::DISPLAY_MODE_ constants.
      */
     private function getDisplayMode(): string
     {
@@ -124,7 +129,7 @@ class PageList extends Template implements BlockInterface
      * Create Filter for searching pages.
      *
      * @param string $pageField  One of PageInterface constants.
-     * @param string $conditionType  Accepted values - eq (equal), neq (not equal).
+     * @param string $conditionType  Accepted values - 'eq' (equal), 'neq' (not equal).
      * @param mixed $fieldValue  Page field value.
      */
     private function createFilter(string $pageField, string $conditionType, mixed $fieldValue): Filter
