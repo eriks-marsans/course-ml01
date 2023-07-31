@@ -1,0 +1,78 @@
+<?php
+    /** @var \Magento\Catalog\Block\Product\View $block */
+    /** @var \Magento\Framework\View\TemplateEngine\Php $this */
+    /** @var \Magento\Framework\Escaper $escaper */
+
+    /** @var \Magento\Framework\App\ObjectManager */
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+    /** @var \Magento\CatalogInventory\Api\StockStateInterface */
+    $stockState = $objectManager->get('\Magento\CatalogInventory\Api\StockStateInterface');
+
+    /** @var \Magento\Framework\View\Asset\Repository */
+    $assetRepository = $objectManager->get('\Magento\Framework\View\Asset\Repository');
+
+    /** @var \Magento\Catalog\Model\Product */
+    $_product = $block->getProduct();
+?>
+
+<div class="addtocart-wrapper">
+    <div class="addtocart-quantity">
+        <div class="quantity">
+            <div class="quantity-counter">
+                <div class="counter" id="addtocart-counter" data-bind="scope: 'addToCartCounter'">
+                    <button class="counter-minus" type="button" data-bind="click: decrement">-</button>
+                    <div class="counter-total">
+                        <input
+                            id="qty"
+                            class="counter-total-input"
+                            name="qty"
+                            type="number"
+                            min="1"
+                            step="1"
+                            data-bind="value: quantity, valueUpdate: 'keyup'"
+                        >
+                    </div>
+                    <button class="counter-plus" type="button" data-bind="click: increment">+</button>
+                </div>
+            </div>
+            <div class="quantity-instock">
+                <img
+                    class="quantity-instock-image"
+                    src="<?= $assetRepository->getUrl('Magento_Catalog/images/checked.svg') ?>"
+                    alt=""
+                >
+                <span class="quantity-instock-primary">
+                    <?= __('IN STOCK') ?>
+                </span>
+                <span class="quantity-instock-items">
+                    <?= $escaper->escapeHtml(__(
+                        $stockState->getStockQty($_product->getId())
+                    )) ?>
+                </span>
+                <span class="quantity-instock-secondary">
+                    <?= __('items aviable') ?>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="addtocart-button-wrapper">
+        <button class="addtocart-button" type="submit">
+            <?= __('Add to Cart') ?>
+        </button>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#addtocart-counter": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "addToCartCounter": {
+                        "component": "Magento_Catalog/js/addtocartCounter"
+                    }
+                }
+            }
+        }
+    }
+</script>

@@ -1,0 +1,12 @@
+@screen__t: 991px; // Tablet
+
+@color-primary: #ff5501;
+@color-primary-hover: darken(@color-primary, 10%);
+@color-primary-active: darken(@color-primary, 20%);
+
+body.catalog-product-view-simple {
+    @import './product/general-simple.less';
+    @import './product/addtocart-simple.less';
+    @import './product/items-upsell-simple.less';
+    @import './product/items-relaed-simple.less';
+}

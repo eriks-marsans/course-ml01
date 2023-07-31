@@ -1,0 +1,59 @@
+<?php
+    /** @var \Magento\Catalog\Block\Product\View\Attributes $block */
+    /** @var \Magento\Framework\Escaper $escaper */
+
+    /** @var \Magento\Catalog\Model\Product */
+    $_product = $block->getProduct();
+
+    /** @var Array<string,Array<string,mixed>> */
+    $_attributeList = $block->getAdditionalData();
+
+    /** @var string|null */
+    $shortDescription = $_product->getData('short_description');
+?>
+
+<?php
+    /** @var Array<int,Array<string,mixed>> */
+    $filteredAttributeList = [];
+
+    if (isset($_attributeList['dimensions'])) $filteredAttributeList[] = $_attributeList['dimensions'];
+    if (isset($_attributeList['color'])) $filteredAttributeList[] = $_attributeList['color'];
+    if (isset($_attributeList['material'])) $filteredAttributeList[] = $_attributeList['material'];
+
+    foreach ($_attributeList as $attribute) {
+        if (count($filteredAttributeList) >= 3) {
+            break;
+        }
+
+        $filteredAttributeList[] = $attribute;
+    }
+?>
+
+<?php if (empty($_attributeList) && empty($shortDescription)) return ?>
+
+<div class="attributes-wrapper">
+    <?php if (!empty($_attributeList)): ?>
+        <ul class="attributes-list">
+            <?php $attributeListKeys = array_keys($filteredAttributeList) ?>
+            <?php for ($i = 0; $i < count($attributeListKeys) && $i <= 2; $i++): ?>
+                <?php $attribute = $filteredAttributeList[$attributeListKeys[$i]] ?>
+
+                <li class="attributes-item">
+                    <div class="attribute">
+                        <span class="attribute-label">
+                            <?= $escaper->escapeHtml($attribute['label']) ?>:
+                        </span>
+                        <span class="attribute-value">
+                            <?= $escaper->escapeHtml($attribute['value']) ?>
+                        </span>
+                    </div>
+                </li>
+            <?php endfor ?>
+        </ul>
+    <?php endif ?>
+    <?php if (!empty($shortDescription)): ?>
+        <div class="attributes-description">
+            <?= $shortDescription ?>
+        </div>
+    <?php endif ?>
+</div>
