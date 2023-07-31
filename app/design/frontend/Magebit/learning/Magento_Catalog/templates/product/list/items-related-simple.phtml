@@ -21,7 +21,7 @@
         <?php for ($i = 0; $i < count($relatedProductKeys) && $i < 6; $i++): ?>
             <?php $relatedProduct = $_relatedProducts[$relatedProductKeys[$i]] ?>
             <li class="related-item">
-                <div class="relateditem">
+                <form class="relateditem" action="<?= $escaper->escapeHtmlAttr($block->getAddToCartUrl($relatedProduct)) ?>" method="POST">
                     <div class="relateditem-image-wr">
                         <img
                             class="relateditem-image"
@@ -49,11 +49,11 @@
                         </span>
                     </div>
                     <div class="relateditem-addtocart-wr">
-                        <button class="relateditem-addtocart-button">
+                        <button class="relateditem-addtocart-button" type="submit">
                             <?= __('Add to Cart') ?>
                         </button>
                     </div>
-                </div>
+                </form>
             </li>
         <?php endfor ?>
     </ul>
