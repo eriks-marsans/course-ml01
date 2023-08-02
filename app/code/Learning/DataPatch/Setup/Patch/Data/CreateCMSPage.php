@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Learning\DataPatch\Setup\Patch\Data;
 
-use Exception;
-use Magento\Cms\Api\Data\PageInterface;
 use Magento\Cms\Api\Data\PageInterfaceFactory;
 use Magento\Cms\Api\PageRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -19,13 +17,10 @@ class CreateCMSPage implements DataPatchInterface, PatchRevertableInterface
     private const KEY_TITLE = 2;
     private const KEY_CONTENT = 3;
 
-    /**
-     * @param PageInterfaceFactory $pageFactory
-     */
     public function __construct(
         private ModuleDataSetupInterface $moduleDataSetup,
         private PageRepositoryInterface $pageRepository,
-        private $pageFactory,
+        private PageInterfaceFactory $pageFactory,
     ) {
     }
 
@@ -43,9 +38,7 @@ class CreateCMSPage implements DataPatchInterface, PatchRevertableInterface
         $this->moduleDataSetup->getConnection()->startSetup();
 
         try {
-            throw new Exception('Hello I am Exception.');
             foreach ($data as $pageData) {
-                /** @var PageInterface */
                 $page = $this->pageFactory->create();
 
                 $page->setIdentifier($pageData[self::KEY_IDENTIFIER]);
