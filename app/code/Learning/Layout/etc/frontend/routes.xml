@@ -4,8 +4,8 @@
     xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd"
 >
     <router id="standard">
-        <route id="myvendor_mymodule" frontName="my-module">
-            <module name="MyVendor_MyModule" />
+        <route id="learning_layout" frontName="simple-layout">
+            <module name="Learning_Layout" />
         </route>
     </router>
 </config>

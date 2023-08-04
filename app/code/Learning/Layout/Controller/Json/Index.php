@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MyVendor\MyModule\Controller\Page;
+namespace Learning\Layout\Controller\Json;
 
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\Result\Json;
 
-class View implements ActionInterface
+class Index implements ActionInterface
 {
     public function __construct(
         private JsonFactory $jsonFactory

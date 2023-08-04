@@ -7,8 +7,8 @@
         <referenceContainer name="content">
             <block
                 class="Magento\Framework\View\Element\Template"
-                name="myvendor.mylayout.mytemplate"
-                template="MyVendor_MyLayout::my_template.phtml"
+                name="learning.layout.simple"
+                template="Learning_Layout::simple_template.phtml"
             />
         </referenceContainer>
     </body>

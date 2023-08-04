@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MyVendor\MyLayout\Controller\Page;
+namespace Learning\Layout\Controller\Page;
 
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\View\Result\Page;
 
-class View implements ActionInterface
+class Index implements ActionInterface
 {
     public function __construct(
         private PageFactory $pageFactory,
@@ -24,9 +24,9 @@ class View implements ActionInterface
         $page = $this->pageFactory->create();
 
         /** @var Template */
-        $block = $page->getLayout()->getBlock('myvendor.mylayout.mytemplate');
+        $block = $page->getLayout()->getBlock('learning.layout.simple');
 
-        $block->setData('myVariable', 'From code');
+        $block->setData('simpleVariable', 'From code');
 
         return $page;
     }
