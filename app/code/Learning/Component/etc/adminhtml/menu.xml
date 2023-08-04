@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd"
+>
+    <menu>
+        <add
+            id="Learning_Component::learning"
+            title="Learning Components"
+            translate="title"
+            sortOrder="1"
+            module="Learning_Component"
+            parent="Magento_Backend::content"
+            resource="Magento_Backend::admin"
+        />
+        <add
+            id="Learning_Component::learning_grid"
+            title="Grid"
+            translate="title"
+            sortOrder="0"
+            module="Learning_Component"
+            parent="Learning_Component::learning"
+            action="learning_component/grid"
+            resource="Magento_Backend::admin"
+        />
+    </menu>
+</config>
