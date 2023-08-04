@@ -6,9 +6,9 @@
     <menu>
         <add
             id="Learning_Component::learning"
-            title="Learning Components"
+            title="Learning"
             translate="title"
-            sortOrder="1"
+            sortOrder="50"
             module="Learning_Component"
             parent="Magento_Backend::content"
             resource="Magento_Backend::admin"
