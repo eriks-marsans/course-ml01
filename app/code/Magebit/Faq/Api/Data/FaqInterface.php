@@ -8,7 +8,7 @@ use DateTimeInterface;
 
 interface FaqInterface
 {
-    public const ID = 'id';
+    public const ID = 'faq_id';
     public const QUESTION = 'question';
     public const ANSWER = 'answer';
     public const STATUS = 'status';
