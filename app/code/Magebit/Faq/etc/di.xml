@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magebit\Faq\Api\Data\FaqInterface" type="Magebit\Faq\Model\Faq" />
+    <preference for="Magebit\Faq\Api\Data\FaqSearchResultsInterface" type="Magebit\Faq\Model\FaqSearchResults" />
+    <preference for="Magebit\Faq\Api\FaqRepositoryInterface" type="Magebit\Faq\Model\FaqRepository" />
+    <preference for="Magebit\Faq\Api\FaqManagementInterface" type="Magebit\Faq\Model\FaqManagement" />
+</config>
