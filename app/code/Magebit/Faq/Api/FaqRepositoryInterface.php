@@ -10,6 +10,11 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 
 interface FaqRepositoryInterface
 {
+    /**
+     * Create empty FaqInterface object.
+     */
+    public function createEmpty(): FaqInterface;
+
     public function save(FaqInterface $faq): FaqInterface;
 
     public function getById(int $id): FaqInterface;
