@@ -17,6 +17,11 @@ class Faq extends AbstractModel implements FaqInterface
         $this->_init(FaqResource::class);
     }
 
+    public function getAllData(): array
+    {
+        return $this->getData();
+    }
+
     public function getId(): ?int
     {
         $id = $this->getData(FaqInterface::ID);

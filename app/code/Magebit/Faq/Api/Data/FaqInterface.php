@@ -19,6 +19,11 @@ interface FaqInterface
     public const STATUS_DISABLED = 0;
 
     /**
+     * @return mixed[] All fields in stringable form.
+     */
+    public function getAllData(): array;
+
+    /**
      * @return int
      */
     public function getId(): ?int;
