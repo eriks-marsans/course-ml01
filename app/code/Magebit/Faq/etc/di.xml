@@ -4,4 +4,23 @@
     <preference for="Magebit\Faq\Api\Data\FaqSearchResultsInterface" type="Magebit\Faq\Model\FaqSearchResults" />
     <preference for="Magebit\Faq\Api\FaqRepositoryInterface" type="Magebit\Faq\Model\FaqRepository" />
     <preference for="Magebit\Faq\Api\FaqManagementInterface" type="Magebit\Faq\Model\FaqManagement" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="faq_listing_data_source" xsi:type="string">
+                    Magebit\Faq\Model\ResourceModel\Faq\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magebit\Faq\Model\ResourceModel\Faq\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">faq</argument>
+            <argument name="eventPrefix" xsi:type="string">faq_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">faq_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Magebit\Faq\Model\ResourceModel\Faq</argument>
+        </arguments>
+    </type>
 </config>
