@@ -21,8 +21,8 @@ class DataProvider extends ModifierPoolDataProvider
         $requestFieldName,
         PoolInterface $pool,
         CollectionFactory $collectionFactory,
-        private FaqRepositoryInterface $faqRepository,
-        private RequestInterface $request,
+        private readonly FaqRepositoryInterface $faqRepository,
+        private readonly RequestInterface $request,
         array $meta = [],
         array $data = [],
     ) {
@@ -38,7 +38,7 @@ class DataProvider extends ModifierPoolDataProvider
     {
         $faqId = (int) $this->request->getParam($this->getRequestFieldName()) ?: null;
 
-        // If new FAQ
+        // If is creation form
         if ($faqId === null) {
             return [];
         }

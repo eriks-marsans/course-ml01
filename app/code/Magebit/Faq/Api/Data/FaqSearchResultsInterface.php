@@ -14,7 +14,7 @@ interface FaqSearchResultsInterface extends SearchResultInterface
     public function getItems(): array;
 
     /**
-     * @param FaqInterface[] $faqList
+     * @param FaqInterface[] $items
      */
-    public function setItems(array $faqList): self;
+    public function setItems(array $items): self;
 }

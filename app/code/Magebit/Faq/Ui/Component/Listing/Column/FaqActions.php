@@ -18,7 +18,7 @@ class FaqActions extends Column
     private const URL_ROUTE_DELETE = 'magebit_faq/faq/delete';
 
     public function __construct(
-        private UrlInterface $urlBuilder,
+        private readonly UrlInterface $urlBuilder,
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
         array $components = [],

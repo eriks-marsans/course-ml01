@@ -10,8 +10,16 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Collection extends AbstractCollection
 {
-    protected function _construct()
+    protected function _construct(): void
     {
         $this->_init(Faq::class, FaqResource::class);
+    }
+
+    /**
+     * @return Faq[]
+     */
+    public function getItems(): array
+    {
+        return parent::getItems();
     }
 }

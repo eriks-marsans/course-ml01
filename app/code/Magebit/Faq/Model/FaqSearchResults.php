@@ -18,10 +18,10 @@ class FaqSearchResults extends SearchResults implements FaqSearchResultsInterfac
     }
 
     /**
-     * @param Faq[] $faqList
+     * @param Faq[] $items
      */
-    public function setItems(array $faqList): self
+    public function setItems(array $items): self
     {
-        return parent::setItems($faqList);
+        return parent::setItems($items);
     }
 }

@@ -14,20 +14,19 @@ use Throwable;
 class InlineEdit extends AbstractAction implements HttpPostActionInterface
 {
     public function __construct(
-        private JsonFactory $jsonFactory,
-        private FaqRepositoryInterface $faqRepository,
-        private \Psr\Log\LoggerInterface $logger,
+        private readonly JsonFactory $jsonFactory,
+        private readonly FaqRepositoryInterface $faqRepository,
         Context $context,
     ) {
         parent::__construct($context);
     }
 
-    public function execute()
+    public function execute(): Json
     {
-        /** @var Json */
+        /** @var Json $resultJson */
         $resultJson = $this->jsonFactory->create();
 
-        /** @var mixed[] */
+        /** @var mixed[] $faqItems */
         $faqItems = $this->getRequest()->getParam('items', []);
 
         if (!($this->getRequest()->getParam('isAjax') && count($faqItems))) {

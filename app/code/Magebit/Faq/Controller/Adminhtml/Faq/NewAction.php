@@ -11,7 +11,7 @@ use Magento\Backend\Model\View\Result\Forward;
 class NewAction extends AbstractAction
 {
     public function __construct(
-        private ForwardFactory $resultForwardFactory,
+        private readonly ForwardFactory $resultForwardFactory,
         Context $context,
     ) {
         parent::__construct($context);
@@ -19,7 +19,7 @@ class NewAction extends AbstractAction
 
     public function execute()
     {
-        /** @var Forward */
+        /** @var Forward $resultForward */
         $resultForward = $this->resultForwardFactory->create();
         return $resultForward->forward('edit');
     }

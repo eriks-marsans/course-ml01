@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Magebit\Faq\Controller\Adminhtml\Faq;
 
 use Magento\Backend\App\Action;
-use Magento\Backend\Model\View\Result\Redirect;
+use Magento\Framework\Controller\Result\Redirect;
 
 abstract class AbstractAction extends Action
 {
@@ -14,7 +14,6 @@ abstract class AbstractAction extends Action
      */
     protected function createResultRedirect(string $route, array $params = []): Redirect
     {
-        /** @var Redirect */
         $resultRedirect = $this->resultRedirectFactory->create();
 
         return $resultRedirect->setPath($route, $params);

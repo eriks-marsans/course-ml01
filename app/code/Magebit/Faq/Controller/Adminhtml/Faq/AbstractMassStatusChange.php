@@ -8,10 +8,10 @@ use Exception;
 use Magebit\Faq\Api\Data\FaqInterface;
 use Magebit\Faq\Api\FaqRepositoryInterface;
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Phrase;
 
 /**
@@ -20,16 +20,16 @@ use Magento\Framework\Phrase;
 abstract class AbstractMassStatusChange extends AbstractAction
 {
     public function __construct(
-        private FaqRepositoryInterface $faqRepository,
-        private FilterBuilder $filterBuilder,
-        private SearchCriteriaBuilder $searchCriteriaBuilder,
+        private readonly FaqRepositoryInterface $faqRepository,
+        private readonly FilterBuilder $filterBuilder,
+        private readonly SearchCriteriaBuilder $searchCriteriaBuilder,
         Context $context,
     ) {
         parent::__construct($context);
     }
 
     /**
-     * @return int One of FaqRepositoryInterface::STATUS_ constants.
+     * Set new Faq status.
      */
     abstract protected function updateFaqStatus(FaqInterface $faq): void;
 
@@ -44,7 +44,7 @@ abstract class AbstractMassStatusChange extends AbstractAction
 
     public function execute(): Redirect
     {
-        /** @var string[]|null */
+        /** @var string[]|null $idList */
         $idList = $this->getRequest()->getParam('selected');
 
         if ($idList === null) {
@@ -57,7 +57,7 @@ abstract class AbstractMassStatusChange extends AbstractAction
             return $this->createResultRedirectBack();
         }
 
-        /** @var Filter[] */
+        /** @var Filter[] $filterList */
         $filterList = [];
 
         foreach ($idList as $id) {

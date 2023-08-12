@@ -17,7 +17,7 @@ use Magento\Framework\Phrase;
 class MassDisable extends AbstractMassStatusChange implements HttpPostActionInterface
 {
     public function __construct(
-        private FaqManagementInterface $faqManagement,
+        private readonly FaqManagementInterface $faqManagement,
         FaqRepositoryInterface $faqRepository,
         FilterBuilder $filterBuilder,
         SearchCriteriaBuilder $searchCriteriaBuilder,

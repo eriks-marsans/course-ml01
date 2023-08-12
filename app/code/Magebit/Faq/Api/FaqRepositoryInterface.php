@@ -11,7 +11,7 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 interface FaqRepositoryInterface
 {
     /**
-     * Create empty FaqInterface object.
+     * Create an empty FaqInterface object.
      */
     public function createEmpty(): FaqInterface;
 

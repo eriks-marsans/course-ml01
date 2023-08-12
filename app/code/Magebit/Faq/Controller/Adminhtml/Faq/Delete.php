@@ -7,15 +7,15 @@ namespace Magebit\Faq\Controller\Adminhtml\Faq;
 use Exception;
 use Magebit\Faq\Api\FaqRepositoryInterface;
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Controller\Result\Redirect;
 
 class Delete extends AbstractAction implements HttpPostActionInterface
 {
     public const PARAM_NAME_ID = 'faq_id';
 
     public function __construct(
-        private FaqRepositoryInterface $faqRepository,
+        private readonly FaqRepositoryInterface $faqRepository,
         Context $context,
     ) {
         parent::__construct($context);

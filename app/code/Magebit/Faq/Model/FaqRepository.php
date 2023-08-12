@@ -12,7 +12,6 @@ use Magebit\Faq\Model\ResourceModel\Faq\Collection;
 use Magebit\Faq\Model\ResourceModel\Faq\CollectionFactory;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\EntityManager\HydratorInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -20,12 +19,11 @@ use Magento\Framework\Exception\NoSuchEntityException;
 class FaqRepository implements FaqRepositoryInterface
 {
     public function __construct(
-        private FaqResource $faqResource,
-        private FaqFactory $faqFactory,
-        private CollectionProcessorInterface $collectionProcessor,
-        private CollectionFactory $faqCollectionFactory,
-        private FaqSearchResultsFactory $faqSearchResultsFactory,
-        private HydratorInterface $hydrator,
+        private readonly FaqResource $faqResource,
+        private readonly FaqFactory $faqFactory,
+        private readonly CollectionProcessorInterface $collectionProcessor,
+        private readonly CollectionFactory $faqCollectionFactory,
+        private readonly FaqSearchResultsFactory $faqSearchResultsFactory,
     ) {
     }
 
@@ -56,7 +54,7 @@ class FaqRepository implements FaqRepositoryInterface
 
     public function getById(int $faqId): Faq
     {
-        /** @var Faq */
+        /** @var Faq $faq */
         $faq = $this->faqFactory->create();
 
         $this->faqResource->load($faq, $faqId);
@@ -70,7 +68,7 @@ class FaqRepository implements FaqRepositoryInterface
 
     public function getList(SearchCriteriaInterface $searchCriteria): FaqSearchResults
     {
-        /** @var Collection */
+        /** @var Collection $collection */
         $collection = $this->faqCollectionFactory->create();
 
         $this->collectionProcessor->process($searchCriteria, $collection);
@@ -114,8 +112,8 @@ class FaqRepository implements FaqRepositoryInterface
      */
     private function makeFaqFromFaqInterface(FaqInterface $faq): Faq
     {
-        // TODO: Implement method
+        // TODO: Implement method.
 
-        throw new \Exception();
+        throw new \Exception('Please implements FaqRepository::makeFaqFromFaqInterface method');
     }
 }

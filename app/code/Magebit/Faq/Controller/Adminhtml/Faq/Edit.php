@@ -15,7 +15,7 @@ class Edit extends AbstractAction implements HttpGetActionInterface
 
     public function execute(): Page
     {
-        /** @var Page */
+        /** @var Page $page */
         $page = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $page->setActiveMenu('Magebit_Faq::faq');
 

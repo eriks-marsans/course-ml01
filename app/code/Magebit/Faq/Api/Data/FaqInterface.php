@@ -19,61 +19,27 @@ interface FaqInterface
     public const STATUS_DISABLED = 0;
 
     /**
-     * @return mixed[] All fields in stringable form.
+     * @return array<string,mixed> All fields in stringable form.
      */
     public function getAllData(): array;
 
-    /**
-     * @return int
-     */
     public function getId(): ?int;
 
-    /**
-     * @param string $question
-     * @return self
-     */
     public function setQuestion(string $question): self;
 
-    /**
-     * @return string
-     */
     public function getQuestion(): string;
 
-    /**
-     * @param string $answer
-     * @return self
-     */
     public function setAnswer(string $answer): self;
 
-    /**
-     * @return string
-     */
     public function getAnswer(): string;
 
-    /**
-     * @param int $status
-     * @return self
-     */
     public function setStatus(int $status): self;
 
-    /**
-     * @return int
-     */
     public function getStatus(): int;
 
-    /**
-     * @param int $position
-     * @return self
-     */
     public function setPosition(int $position): self;
 
-    /**
-     * @return int
-     */
     public function getPosition(): int;
 
-    /**
-     * @return DateTimeInterface
-     */
     public function getUpdatedAt(): DateTimeInterface;
 }

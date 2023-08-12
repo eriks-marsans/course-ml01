@@ -5,18 +5,20 @@ declare(strict_types=1);
 namespace Magebit\Faq\Model;
 
 use DateTimeImmutable;
-use DateTimeInterface;
 use Magebit\Faq\Api\Data\FaqInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magebit\Faq\Model\ResourceModel\Faq as FaqResource;
 
 class Faq extends AbstractModel implements FaqInterface
 {
-    protected function _construct()
+    protected function _construct(): void
     {
         $this->_init(FaqResource::class);
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getAllData(): array
     {
         return $this->getData();

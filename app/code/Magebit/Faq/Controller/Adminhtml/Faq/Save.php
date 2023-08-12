@@ -7,14 +7,14 @@ namespace Magebit\Faq\Controller\Adminhtml\Faq;
 use Magebit\Faq\Api\Data\FaqInterface;
 use Magebit\Faq\Api\FaqRepositoryInterface;
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Model\View\Result\Redirect;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Throwable;
 
 class Save extends AbstractAction implements HttpPostActionInterface
 {
     public function __construct(
-        private FaqRepositoryInterface $faqRepository,
+        private readonly FaqRepositoryInterface $faqRepository,
         Context $context,
     ) {
         parent::__construct($context);

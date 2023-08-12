@@ -26,7 +26,7 @@ class FaqList extends Template implements BlockInterface
         parent::__construct($context, $data);
     }
 
-    public function getFaqList(): FaqSearchResultsInterface
+    public function getFaqs(): FaqSearchResultsInterface
     {
         $searchCriteria = $this->searchCriteriaBuilder
             ->addFilter(FaqInterface::STATUS, FaqInterface::STATUS_ENABLED)

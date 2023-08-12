@@ -12,7 +12,7 @@ class SaveButton implements ButtonProviderInterface
     /**
      * @return mixed[]
      */
-    public function getButtonData()
+    public function getButtonData(): array
     {
         return [
             'label' => __('Save'),
@@ -24,13 +24,11 @@ class SaveButton implements ButtonProviderInterface
                             [
                                 'targetName' => 'faq_form.faq_form',
                                 'actionName' => 'save',
-                                'params' => [
-                                    false
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                'params' => [ false ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'class_name' => Container::SPLIT_BUTTON,
             'options' => $this->getOptions(),
@@ -57,15 +55,13 @@ class SaveButton implements ButtonProviderInterface
                                 [
                                     'targetName' => 'faq_form.faq_form',
                                     'actionName' => 'save',
-                                    'params' => [
-                                        true
-                                    ],
+                                    'params' => [ true ],
                                 ],
                             ],
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

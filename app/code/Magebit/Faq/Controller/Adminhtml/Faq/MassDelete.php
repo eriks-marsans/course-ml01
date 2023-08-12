@@ -7,13 +7,13 @@ namespace Magebit\Faq\Controller\Adminhtml\Faq;
 use Exception;
 use Magebit\Faq\Api\FaqRepositoryInterface;
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Controller\Result\Redirect;
 
 class MassDelete extends AbstractAction implements HttpPostActionInterface
 {
     public function __construct(
-        private FaqRepositoryInterface $faqRepository,
+        private readonly FaqRepositoryInterface $faqRepository,
         Context $context,
     ) {
         parent::__construct($context);
@@ -21,7 +21,7 @@ class MassDelete extends AbstractAction implements HttpPostActionInterface
 
     public function execute(): Redirect
     {
-        /** @var string[]|null */
+        /** @var string[]|null $idList */
         $idList = $this->getRequest()->getParam('selected');
 
         if ($idList === null) {
