@@ -1,0 +1,45 @@
+<?php
+    /** @var \Magebit\Faq\Block\FaqList $block */
+    /** @var \Magento\Framework\Escaper $escaper */
+
+    /** @var \Magebit\Faq\Api\Data\FaqInterface[] $_faqList */
+    $_faqList = $block->getFaqList()->getItems();
+?>
+
+<div class="faq">
+    <h2 class="faq_title">Frequently Asked Questions</h2>
+    <div class="faq_body">
+        <ul class="faq_list" id="faq_list">
+            <?php foreach ($_faqList as $faq): ?>
+                <li class="faq_item">
+                    <div class="faqitem" data-role="collapsible">
+                        <div class="faqitem_question_wr" data-role="trigger">
+                            <span class="faqitem_question">
+                                <?= $escaper->escapeHtml(__($faq->getQuestion())) ?>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="faqitem_answer_wr" data-role="content">
+                        <span class="faqitem_answer">
+                            <?= $escaper->escapeHtml(__($faq->getAnswer())) ?>
+                        </span>
+                    </div>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#faq_list": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "faqAccordion": {
+                        "component": "Magebit_Faq/js/faqAccordion"
+                    }
+                }
+            }
+        }
+    }
+</script>
